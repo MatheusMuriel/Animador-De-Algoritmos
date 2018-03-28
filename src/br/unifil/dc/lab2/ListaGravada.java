@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,8 +27,46 @@ public class ListaGravada implements Transparencia
     
     public void pintar(Graphics2D pincel, JPanel contexto) {
         Dimension dim = contexto.getSize();
+        //pincel.drawRect(200,200,10,10);
+        System.out.println("Dentro do Lista Gravada " + lista);
+        int maiorElemento = 0;
+        for(int i = 0; i < lista.size(); i++){
+            if (lista.get(i) > maiorElemento){
+                maiorElemento = lista.get(i);
+            }
+        }
 
-        throw new RuntimeException("Funcionalidade ainda não implementada pelo aluno");
+        //comparando elementos
+        List<Float> listaProporcoes = new ArrayList<>();
+        for (int i = 0; i < lista.size(); i++){
+            // gera um numero quebrado referente a proporção
+            float listTemp = lista.get(i);
+            float temp = listTemp / maiorElemento;
+            listaProporcoes.add(i, temp);
+        }
+
+        //Gera em pixel os tamanhos
+        List<Integer> listaPixels = new ArrayList<>();
+        for (int i = 0; i < lista.size(); i++){
+            int temp = (listaProporcoes.get(i)).intValue();
+            float px = 300 * listaProporcoes.get(i);
+            int aux = (int) px;
+            listaPixels.add(i, aux);
+        }
+
+        //exibe na tela
+        final int x = dim.width;
+        final int y = dim.height;
+
+        int xBarra = 100;
+        int yBarra = 100;
+        //pincel.drawRect(100,100,30, listaPixels.get(1));
+        for (int i : listaPixels){
+            pincel.drawRect(xBarra, yBarra, 30, i);
+            xBarra += 40;
+        }
+
+        //throw new RuntimeException("Funcionalidade ainda não implementada pelo aluno");
     }
     
     

@@ -81,6 +81,7 @@ public class AnimadorAlgoritmos extends JFrame {
     public void onBtnCarregarPressionado() {
         // Verifica o desenho escolhido no ComboBox e repassa à tela para pintura
         List<Integer> valores = textoParaLista(txfEntradaValores.getText());
+        System.out.println(valores); //teste
         String algoritmo = (String) boxListaAlgoritmos.getSelectedItem();
         
         Gravador novoFilme = null;

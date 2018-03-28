@@ -20,7 +20,7 @@ public class Gravador
     public void gravarLista(List<Integer> lista, String nome) {
         List<Integer> copia = new ArrayList<Integer>(lista);
         List<Color> cores = novaListaColors(lista.size());
-        ListaGravada gravacao = new ListaGravada(copia, cores, nome);
+        ListaGravada gravacao = new ListaGravada(copia, cores, nome); //Construtor
         seqGravacoes.add(gravacao);
     }
 

@@ -58,15 +58,20 @@ public class ListaGravada implements Transparencia
         final int x = dim.width;
         final int y = dim.height;
 
-        int xBarra = 100;
+        int xBarra = 20;
+        //Fazer um relacao de aumento
+        int quadroInterno = y - 40;
+        int larguraBlocos = 72;
+        int espaçosBlocos = 50;
+        int numeroDeBlocos = lista.size();
 
         //pincel.drawRect(100,100,30, listaPixels.get(1));
         for (int i = 0; i < lista.size(); i++){
             int yBarra = y - 100 - listaPixels.get(i);
-            pincel.drawRect(xBarra, yBarra, 30, listaPixels.get(i));
+            pincel.drawRect(xBarra, yBarra, 72, listaPixels.get(i));
             String aux = Integer.toString(lista.get(i));
-            pincel.drawString(aux, xBarra + 10, y - 85);
-            xBarra += 40;
+            pincel.drawString(aux, xBarra + 30, y - 85);
+            xBarra += 72 + 50; //Afasta as colunas entre si
         }
 
         //throw new RuntimeException("Funcionalidade ainda não implementada pelo aluno");

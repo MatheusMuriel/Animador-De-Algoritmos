@@ -59,10 +59,13 @@ public class ListaGravada implements Transparencia
         final int y = dim.height;
 
         int xBarra = 100;
-        int yBarra = 100;
+
         //pincel.drawRect(100,100,30, listaPixels.get(1));
-        for (int i : listaPixels){
-            pincel.drawRect(xBarra, yBarra, 30, i);
+        for (int i = 0; i < lista.size(); i++){
+            int yBarra = y - 100 - listaPixels.get(i);
+            pincel.drawRect(xBarra, yBarra, 30, listaPixels.get(i));
+            String aux = Integer.toString(lista.get(i));
+            pincel.drawString(aux, xBarra + 10, y - 85);
             xBarra += 40;
         }
 

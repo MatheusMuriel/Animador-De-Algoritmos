@@ -5,13 +5,15 @@ import javax.swing.BorderFactory;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
 import java.util.ListIterator;
 
 /**
- * Write a description of class Tocador here.
+ * Classe para iniciar os filmes.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author MatheusMuriel
+ * @version 09/04/2018
  */
 public class Tocador extends JPanel {
 
@@ -59,12 +61,24 @@ public class Tocador extends JPanel {
         if (quadroAtual != null) {
             quadroAtual.pintar(pincel, this);
         } else {
-            // ESCREVER NO MEIO DA TELA "O Filme ainda não iniciou."
-            //throw new UnsupportedOperationException("O aluno ainda não implementou essa funcionalidade.");
+            String texto = "O Filme ainda não iniciou.";
+            FontMetrics fm = pincel.getFontMetrics();
+            
+            Dimension dim = getSize();
+            
+            double xString =  (dim.width/2) - (fm.stringWidth(texto)/2);
+            double yString = (dim.height/2) - (fm.getHeight()/2);
+            pincel.drawString(texto, (int) xString, (int) yString);
         }
         
-        // ESCREVER NO CANTO INFERIOR DIREITO DA TELA "Quadro 'numQuadro'"
-        //throw new UnsupportedOperationException("O aluno ainda não implementou essa funcionalidade.");
+        String texto = "Quadro 'numQuadro'";
+            FontMetrics fm = pincel.getFontMetrics();
+            
+            Dimension dim = getSize();
+            
+            double xString =  dim.width - fm.stringWidth(texto) - 3;
+            double yString = dim.height - fm.getHeight() + 8;
+            pincel.drawString(texto, (int) xString, (int) yString);
     }
     
     private int numQuadro = 0;

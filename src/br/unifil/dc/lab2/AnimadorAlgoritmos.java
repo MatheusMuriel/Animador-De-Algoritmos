@@ -62,7 +62,7 @@ public class AnimadorAlgoritmos extends JFrame {
         
         // Cria e configura a tela do desenhista
         tela = new Tocador();
-        tela.setPreferredSize(new Dimension(800, 600));
+        tela.setPreferredSize(new Dimension(600, 600));
 
         // Container que organiza o posicionamento dos botões e da tela
         Container organizacao = getContentPane();
@@ -81,8 +81,8 @@ public class AnimadorAlgoritmos extends JFrame {
     public void onBtnCarregarPressionado() {
         // Verifica o desenho escolhido no ComboBox e repassa à tela para pintura
         List<Integer> valores = textoParaLista(txfEntradaValores.getText());
-        System.out.println(valores); //teste
         String algoritmo = (String) boxListaAlgoritmos.getSelectedItem();
+        int chave;
         
         Gravador novoFilme = null;
         switch (algoritmo) {
@@ -90,12 +90,33 @@ public class AnimadorAlgoritmos extends JFrame {
                 novoFilme = AlgoritmosAnimados.listaEstatica(valores);
                 break;
             case "Busca sequencial":
-                int chave = Integer.parseInt(txfEntradaChaveBusca.getText());
+                chave  = Integer.parseInt(txfEntradaChaveBusca.getText());
                 novoFilme = AlgoritmosAnimados.buscaSequencial(valores, chave);
                 break;
             
             case "Bolha":
                 novoFilme = AlgoritmosAnimados.ordenarPorBolha(valores);
+                break;
+                
+            case "Seleção":
+                novoFilme = AlgoritmosAnimados.ordenarPorSelecao(valores);
+                break;
+            
+            case "Busca binária":
+                chave = Integer.parseInt(txfEntradaChaveBusca.getText());
+                novoFilme = AlgoritmosAnimados.buscaBinaria(valores, chave);
+                break;
+                
+            case "Inserção":
+                novoFilme = AlgoritmosAnimados.ordenarPorInsercao(valores);
+                break;
+            
+            case "Mergesort":
+                novoFilme = AlgoritmosAnimados.ordenarPorMergesort(valores);
+                break;
+                
+            case "Quicksort":
+                novoFilme = AlgoritmosAnimados.ordenarPorQuicksort(valores);
                 break;
                 
             default:
